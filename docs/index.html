@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>This PIN Can Be Easily Guessed</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/thirdparty/bootstrap.min.css" rel="stylesheet">
+    <link href="css/thirdparty/fontawesome.all.min.css" rel="stylesheet">
+    <link href="css/custom/website.css" rel="stylesheet">
+    <link rel="shortcut icon" href="ico/favicon.ico">
+    <meta name="description" content="Study of user-chosen 4- and 6-digit PINs" />
+    <meta name="keywords" content="authentication, mobile, PIN, Passcode, smartphone, blacklist" />
+    <meta name="author" content="Philipp Markert, Daniel V. Bailey, Maximilian Golla, Markus Duermuth, and Adam J. Aviv">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@ruhrunibochum">
+    <meta name="twitter:title" content="This PIN Can Be Easily Guessed">
+    <meta name="twitter:description" content="A comprehensive study on the security and usability of user-chosen 4- and 6-digit smartphone unlock PINs.">
+    <meta name="twitter:image" content="https://this-pin-can-be-easily-guessed.github.io/images/twittercard.jpg">
+    <!-- Facebook Card -->
+    <meta property="og:url" content="https://this-pin-can-be-easily-guessed.github.io">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="This PIN Can Be Easily Guessed">
+    <meta property="og:description" content="A comprehensive study of user-chosen 4- and 6-digit smartphone unlock PINs.">
+    <meta property="og:image" content="https://this-pin-can-be-easily-guessed.github.io/images/twittercard.jpg">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark text-white">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">PINs</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                    <ul class="navbar-nav mr-auto smooth-scroll">
+                        <li class="nav-item active"><a class="nav-link text-white" href="#overview">Overview</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#datasets">Datasets</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#paper">Paper</a></li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link text-white" href="contact.html">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="priv.html">Privacy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <!-- title -->
+        <div id="title">
+            <div class="jumbotron">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <img src="images/iphone_shot.jpg" class="img-fluid rounded" alt="">
+                    </div>
+                    <div class="col-sm-9" style="padding-right:5px;padding-left:5px;">
+                        <h1 class="h1-responsive">This PIN Can Be Easily Guessed</h1>
+                        <hr>
+                        <p>Philipp Markert, Daniel V. Bailey, Maximilian Golla, Markus D&uuml;rmuth, and Adam J. Aviv
+                            <br>
+                            <i><a href="https://www.ruhr-uni-bochum.de/en" target="_blank">Ruhr University Bochum</a> &amp; <a href="https://www.mpi-sp.org" target="_blank">Max Planck Institute for Security and Privacy</a> &amp; <a href="https://www.gwu.edu" target="_blank">The George Washington University</a></i><br>
+                            <i>IEEE Symposium on Security and Privacy</i>, San Francisco, California, USA, May 2020
+                        </p>
+                        <p>
+                            <b>tl;dr:</b> Study of user-chosen 4- and 6-digit PINs collected on smartphones for device unlocking. Measuring the effects of blacklists, where a set of "<i>easy to guess</i>" PINs is disallowed during selection.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end title -->
+        <!-- Intro -->
+        <div id="overview">
+            <h1 class="display-4"><i class="fas fa-unlock-alt"></i> Overview</h1>
+            <hr>
+            <br>
+            <div class="row">
+                <div class="col-sm-7">
+                    <h2><i class="fas fa-mobile-alt"></i> PIN Selection on Smartphones</h2>
+                    <p>We conducted a user study focused on the selection of <a href="https://en.wikipedia.org/wiki/Personal_identification_number" target="_blank">Personal Identification Numbers (PINs)</a> based on data collected from users specifically primed for the smartphone unlock setting. Despite the rise of biometrics, such as fingerprint or facial recognition, devices still require PINs, e.g., after a restart or when the biometric fails.</p>
+                    <p>As a mechanism for improving PIN selection, we also studied how PINs are affected by blacklisting. A blacklist is a set of "<i>easy to guess</i>" PINs, which triggers a warning to the user. Apple iOS devices show the warning "<b>This PIN Can Be Easily Guessed</b>" with a choice to "<i>Use Anyway</i>" or "<i>Change PIN</i>."</p>
+                </div>
+                <div class="col-sm-5">
+                    <img src="images/warning.jpg" class="img-fluid rounded" alt="Responsive image">
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm-5">
+                    <img src="images/6_vs_4.jpg" class="img-fluid rounded" alt="Responsive image">
+                </div>
+                <div class="col-sm-7">
+                    <h2 style="padding-top: 1rem;"><i class="fas fa-microscope"></i> Findings</h2>
+                    <p>Our study found there is
+                        <mark>little benefit to longer 6-digit PINs</mark> as compared to 4-digit PINs. Our participants tended to select more-easily guessed 6-digit PINs when considering the first 40 guesses of an attacker. Moreover, our results show that
+                        <mark>currently employed PIN blacklists are ineffective.</mark> Through quantitative and qualitative feedback, we found that participants perceive that blacklisting will improve their PINs without impacting usability.</p>
+                    <table class="table table-responsive table-hover">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Strategy</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Dates</td>
+                                <td>Special date like birthday, anniversary, or graduation day</td>
+                                <td>1987&nbsp;/&nbsp;112518</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Memorable</td>
+                                <td>Memorability was the main concern</td>
+                                <td>2827&nbsp;/&nbsp;777888</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Pattern</td>
+                                <td>Visualized a pattern on the PIN pad</td>
+                                <td>2580&nbsp;/&nbsp;137955</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <h2><i class="fab fa-apple"></i> Apple's iOS Passcode Blacklist</h2>
+                    <p>The iOS blacklist of passcodes was <mark>obtained via brute-force.</mark> To test if a PIN is blacklisted, one only needs to try it and see if a warning appears. During the initial iOS setup there is no rate-limiting in place, which enabled us to quickly test all possible PINs.
+                    </p>
+                    <p>We constructed <mark>a device to automate this process using a Raspberry Pi equipped with a camera.</mark> The device emulates a USB keyboard, which is connected to the iPhone. After entering a PIN, the camera takes a photo of the iPhone screen. The photo is sent to a remote server, where the presence of the blacklist warning is detected by extracting the text in the photo.</p>
+                    <p>More details and photos of the PIN extraction device can be found <a href="media/Robot-2020-03-11.pdf" target="_blank"><i class="fas fa-file-pdf"></i> here</a>.</p>
+                </div>
+                <div class="col-sm-6">
+                    <img src="images/robot_col.jpg" class="img-fluid rounded" alt="Responsive image">
+                </div>
+            </div>
+        </div>
+        <!-- end intro -->
+        <br>
+        <!-- Datasets -->
+        <div id="datasets">
+            <h1 class="display-4"><i class="fas fa-hdd"></i> Datasets</h1>
+            <hr>
+            <br>
+            <div class="row">
+                <div class="col-sm-12">
+                    <h2><i class="fas fa-clipboard-list"></i> Blacklists</h2>
+                    <p>In our study, we tested various blacklists in <i>enforcing</i> and <i>non-enforcing</i> settings. Besides Apple's 4-digit and 6-digit blacklists, we also created data-driven blacklists that are significantly (10x) smaller (27 PINs) and (10x) larger (2740 PINs) than the iOS 4-digit blacklist. To foster future research on this topic, we publish some of the studied blacklists here.</p>
+                    <table class="table table-responsive-md table-hover">
+                        <caption>Apple's iOS Passcode blacklist was last updated with iOS 10.3 (14E277). Our data-driven blacklists, are based on PINs released by <a href="http://danielamitay.com/blog/2011/6/13/most-common-iphone-passcodes" target="_blank">Daniel Amitay</a> in 2011 and are partly reordered using a Markov model.</caption>
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th class="text-center" scope="col">Source</th>
+                                <th class="text-center" scope="col">Length</th>
+                                <th class="text-right" scope="col">Blacklisted</th>
+                                <th class="text-center" scope="col">Download</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>iOS-4-digit</td>
+                                <td class="text-center">Apple iOS</td>
+                                <td class="text-center">4-digit</td>
+                                <td class="text-right">274</td>
+                                <td class="text-center"><a href="media/iOS-4-digit.zip" target="_blank" class="text-dark"><i class="fas fa-cloud-download-alt"></i></a></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>iOS-6-digit</td>
+                                <td class="text-center">Apple iOS</td>
+                                <td class="text-center">6-digit</td>
+                                <td class="text-right">2910</td>
+                                <td class="text-center"><a href="media/iOS-6-digit.zip" target="_blank" class="text-dark"><i class="fas fa-cloud-download-alt"></i></a></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>DD-4-digit-27</td>
+                                <td class="text-center">Top Amitay</td>
+                                <td class="text-center">4-digit</td>
+                                <td class="text-right">27</td>
+                                <td class="text-center"><a href="media/DD-4-digit-27.zip" target="_blank" class="text-dark"><i class="fas fa-cloud-download-alt"></i></a></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">5</th>
+                                <td>DD-4-digit-2740</td>
+                                <td class="text-center">Top Amitay</td>
+                                <td class="text-center">4-digit</td>
+                                <td class="text-right">2740</td>
+                                <td class="text-center"><a href="media/DD-4-digit-2740.zip" target="_blank" class="text-dark"><i class="fas fa-cloud-download-alt"></i></a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- end col12 -->
+            </div>
+            <!-- end row -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <h2><i class="fas fa-file-csv"></i> PIN Datasets</h2>
+                    <p>Before our user study, the most realistic set of 4-digit PINs was from 2011, where <a href="http://danielamitay.com/blog/2011/6/13/most-common-iphone-passcodes" target="_blank">Daniel Amitay</a> developed the iOS application "Big Brother Camera Security." The app mimicked a lock screen allowing users to set a 4-digit PIN. Amitay anonymously and surreptitiously collected 4-digit PINs (204 432). As there was no similar 6-digit PIN data available to inform our attacker, we relied on 6-digit PINs extracted from the <a href="https://techcrunch.com/2009/12/14/rockyou-hack-security-myspace-facebook-passwords/" target="_blank">RockYou password leak</a>, similar to <a href="https://link.springer.com/chapter/10.1007/978-3-642-32946-3_3" target="_blank">Bonneau et al. (2012)</a> and <a href="https://dl.acm.org/doi/10.1145/3052973.3053031" target="_blank">Wang et al. (2017)</a>. PINs are extracted from consecutive sequences of exactly <i>n</i>-digits in leaked password data. By following this method, we extracted 6-digit PINs from the RockYou password leak, which we refer to as RockYou-6-digit (2 758 490 PINs). For comparison, we also provide a 4-digit version of the RockYou dataset (1 780 587 PINs).</p>
+                    <table class="table table-responsive-md table-hover">
+                        <caption>Our attacker guesses PINs in decreasing probability order based on the Amitay-4-digit and RockYou-6-digit datasets. When two or more PINs share the same frequency, i.e., it is not possible to directly determine a guessing order, we ordered those PINs using a Markov model.</caption>
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th class="text-center" scope="col">Source</th>
+                                <th class="text-center" scope="col">Length</th>
+                                <th class="text-right" scope="col">PINs</th>
+                                <th class="text-center" scope="col">Download</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Amitay-4-digit</td>
+                                <td class="text-center">Amitay</td>
+                                <td class="text-center">4-digit</td>
+                                <td class="text-right">204 432</td>
+                                <td class="text-center"><a href="http://danielamitay.com/blog/2011/6/13/most-common-iphone-passcodes" target="_blank" class="text-dark"><i class="fas fa-external-link-alt"></i></a></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>RockYou-4-digit</td>
+                                <td class="text-center">RockYou</td>
+                                <td class="text-center">4-digit</td>
+                                <td class="text-right">1 780 587</td>
+                                <td class="text-center"><a href="media/RockYou-4-digit.zip" target="_blank" class="text-dark"><i class="fas fa-cloud-download-alt"></i></a></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>RockYou-6-digit</td>
+                                <td class="text-center">RockYou</td>
+                                <td class="text-center">6-digit</td>
+                                <td class="text-right">2 758 490</td>
+                                <td class="text-center"><a href="media/RockYou-6-digit.zip" target="_blank" class="text-dark"><i class="fas fa-cloud-download-alt"></i></a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <h2><i class="fas fa-search"></i> User-Chosen PINs</h2>
+                    <p>We conducted a user study of 4- and 6-digit PINs using Amazon Mechanical Turk (MTurk) with (n=1220) participants over a period of three weeks. To mimic the PIN creation process in our browser-based study, participants were restricted to mobile devices by checking the User-Agent string. We applied a 9-treatment, between-subjects study protocol for the PIN selection criteria, e.g., 4- vs. 6-digit with or without blacklisting. At the end of the study, we collected 851 and 369 PINs, 4- and 6-digits, respectively. These PINs were all selected, confirmed, and recalled. We additionally recorded all intermediate PIN selections, such as what would happen if a selected PIN was not blacklisted and the participant did not have to select a different PIN.</p>
+                    <p>We share this dataset of user-chosen PINs with other research institutions upon request. Contact details (<i class="fas fa-envelope-open-text"></i>) are published along with the paper.</p>
+                </div>
+            </div>
+        </div>
+        <!-- end datasets -->
+        <br>
+        <!-- paper -->
+        <div id="paper">
+            <h1 class="display-4"><i class="fas fa-file-pdf"></i> Technical Paper</h1>
+            <hr>
+            <p>Our work will appear at the <a href="https://www.ieee-security.org/TC/SP2020/">41st IEEE Symposium on Security and Privacy</a>. A preprint of the paper is available here:</p>
+            <p><a class="btn btn-primary" href="https://arxiv.org/search/?searchtype=author&query=Aviv%2C+A+J" target="_blank" role="button"><i class="fas fa-file-pdf"></i> Download the Paper</a></p>
+            <br>
+            <h2><i class="fas fa-align-left"></i> Abstract</h2>
+            <p>In this paper, we provide the first comprehensive study of user-chosen 4- and 6-digit PINs (n=1220) collected on smartphones with participants being explicitly primed for the situation of device unlocking. We find that against a throttled attacker (with 10, 30, or 100 guesses, matching the smartphone unlock setting), using 6-digit PINs instead of 4-digit PINs provides little to no increase in security, and surprisingly may even decrease security.</p>
+            <p>We also study the effects of blacklists, where a set of "easy to guess" PINs is disallowed during selection. Two such blacklists are in use today by iOS, for 4-digits (274 PINs) as well as 6-digits (2910 PINs). We extracted both blacklists compared them with four other blacklists, including a small 4-digit (27 PINs), a large 4-digit (2740 PINs), and two placebo blacklists for 4- and 6-digit PINs that always excluded the first-choice PIN. We find that relatively small blacklists in use today by iOS offer little or no benefit against a throttled guessing attack. Security gains are only observed when the blacklists are much larger, which in turn comes at the cost of increased user frustration. Our analysis suggests that a blacklist at about 10% of the PIN space may provide the best balance between usability and security.</p>
+            <br>
+            <h2><i class="fas fa-book"></i> BibTeX</h2>
+            <div>
+                If you want to cite the dataset or the paper, please use the following BibTeX entry:
+            </div>
+            <br>
+            <pre class="code bg-light">@inproceedings{markert-20-pin-blacklist,
+    author = {Markert, Philipp and Bailey, Daniel V. and Golla, Maximilian and D\"{u}rmuth, Markus and Aviv, Adam J.},
+    title = {{This PIN Can Be Easily Guessed}},
+    booktitle = {IEEE Symposium on Security and Privacy},
+    year = {2020},
+    series = {SP~'20},
+    pages = {},
+    address = {San Francisco, California, USA},
+    month = may,
+    publisher = {IEEE}
+}</pre>
+        </div>
+        <!-- end paper -->
+    </div>
+    <!-- end .container -->
+    <footer id="footer" class="footer bg-dark text-white">
+        <div class="container" style="padding-top: 15px;">
+            <div class="row">
+                <div class="col-sm-10">
+                    <h5 class="text-uppercase">This PIN Can Be Easily Guessed</h5>
+                    <p>Philipp Markert, Daniel V. Bailey, Maximilian Golla, Markus D&uuml;rmuth, and Adam J. Aviv
+                        <br>
+                        <i>Ruhr University Bochum &amp; Max Planck Institute for Security and Privacy &amp; The George Washington University</i>
+                    </p>
+                </div>
+                <div class="col-sm-2">
+                    <h5 class="text-uppercase"><a href="contact.html">Contact</a></h5>
+                    <h5 class="text-uppercase"><a href="priv.html">Privacy</a></h5>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="js/thirdparty/jquery-3.4.1.min.js"></script>
+    <script src="js/thirdparty/bootstrap.min.js"></script>
+    <script>
+        $('.navbar-collapse a').click(function() {
+            $(".navbar-collapse").collapse('hide');
+        });
+    </script>
+    <script>
+        $(".smooth-scroll").on('click', 'a', function(event) {
+            event.preventDefault();
+            var elAttr = $(this).attr('href');
+            var offset = ($(this).attr('data-offset') ? $(this).attr('data-offset') : 0);
+            var fixedTop = $('.navbar.fixed-top');
+            if (fixedTop && fixedTop.length) {
+                offset = fixedTop.outerHeight();
+            }
+            $('body,html').animate({
+                //scrollTop: $(elAttr).offset().top - offset
+                scrollTop: $(elAttr).offset().top - 56
+            }, 700);
+        });
+    </script>
+    <script>
+        // Push the footer down
+        $(document).ready(function() {
+
+            var docHeight = $(window).height();
+            var footerHeight = $('#footer').height();
+            var footerTop = $('#footer').position().top + footerHeight;
+
+            if (footerTop < docHeight)
+                $('#footer').css('margin-top', 0 + (docHeight - footerTop) + 'px');
+        });
+    </script>
+</body>
+
+</html>

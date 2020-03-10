@@ -1,0 +1,23 @@
+html, body {
+    width: 100%;
+}
+.jumbotron {
+    padding-top: 32px;
+    padding-bottom: 32px;
+    margin-bottom: 10px;
+}
+
+.container {
+    padding-top: 70px;
+}
+
+nav > .container {
+    padding-top: 0px;
+}
+
+@media (max-width: 720px) {
+ .table th,
+ .table td {
+     padding: .3em !important;
+  }
+}
