@@ -1,147 +1,140 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <title>This PIN Can Be Easily Guessed</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="css/thirdparty/bootstrap.min.css" rel="stylesheet">
-    <link href="css/thirdparty/fontawesome.all.min.css" rel="stylesheet">
-    <link href="css/custom/website.css" rel="stylesheet">
-    <link rel="shortcut icon" href="ico/favicon.ico">
-    <meta name="description" content="Study of user-chosen 4- and 6-digit PINs" />
-    <meta name="keywords" content="authentication, mobile, PIN, Passcode, smartphone, blacklist" />
-    <meta name="author" content="Philipp Markert, Daniel V. Bailey, Maximilian Golla, Markus Duermuth, and Adam J. Aviv">
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@ruhrunibochum">
-    <meta name="twitter:title" content="This PIN Can Be Easily Guessed">
-    <meta name="twitter:description" content="A comprehensive study on the security and usability of user-chosen 4- and 6-digit smartphone unlock PINs.">
-    <meta name="twitter:image" content="https://this-pin-can-be-easily-guessed.github.io/images/twittercard.jpg">
-    <!-- Facebook Card -->
-    <meta property="og:url" content="https://this-pin-can-be-easily-guessed.github.io">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="This PIN Can Be Easily Guessed">
-    <meta property="og:description" content="A comprehensive study of user-chosen 4- and 6-digit smartphone unlock PINs.">
-    <meta property="og:image" content="https://this-pin-can-be-easily-guessed.github.io/images/twittercard.jpg">
-</head>
-
-<body>
-    <header>
-        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark text-white">
-            <div class="container">
-                <a class="navbar-brand" href="index.html">PINs</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-                    <ul class="navbar-nav mr-auto smooth-scroll">
-                        <li class="nav-item active"><a class="nav-link text-white" href="index.html#overview">Overview</a></li>
-                        <li class="nav-item"><a class="nav-link text-white" href="index.html#datasets">Datasets</a></li>
-                        <li class="nav-item"><a class="nav-link text-white" href="index.html#paper">Paper</a></li>
-                    </ul>
-                    <ul class="navbar-nav">
-                        <li class="nav-item"><a class="nav-link text-white" href="contact.html">Contact</a></li>
-                        <li class="nav-item"><a class="nav-link text-white" href="priv.html">Privacy</a></li>
-                    </ul>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Meta -->
+        <meta name="description" content="Study of user-chosen 4- and 6-digit PINs" />
+        <meta name="keywords" content="authentication, mobile, PIN, Passcode, smartphone, blacklist" />
+        <meta name="author" content="Philipp Markert, Daniel V. Bailey, Maximilian Golla, Markus Duermuth, and Adam J. Aviv">
+        <!-- Performance -->
+        <link rel="preload" href="webfonts/fa-regular-400.woff2" as="font" crossorigin="anonymous">
+        <link rel="preload" href="webfonts/fa-brands-400.woff2" as="font" crossorigin="anonymous">
+        <link rel="preload" href="webfonts/fa-solid-900.woff2" as="font" crossorigin="anonymous">
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@ruhrunibochum">
+        <meta name="twitter:title" content="This PIN Can Be Easily Guessed">
+        <meta name="twitter:description" content="A comprehensive study on the security and usability of user-chosen 4- and 6-digit smartphone unlock PINs.">
+        <meta name="twitter:image" content="https://this-pin-can-be-easily-guessed.github.io/images/twittercard.jpg">
+        <!-- Facebook Card -->
+        <meta property="og:url" content="https://this-pin-can-be-easily-guessed.github.io">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="This PIN Can Be Easily Guessed">
+        <meta property="og:description" content="A comprehensive study of user-chosen 4- and 6-digit smartphone unlock PINs.">
+        <meta property="og:image" content="https://this-pin-can-be-easily-guessed.github.io/images/twittercard.jpg">
+        <!-- Style -->
+        <link rel="shortcut icon" href="ico/favicon.ico">
+        <title>This PIN Can Be Easily Guessed</title>
+        <link href="css/thirdparty/bootstrap.min.css" rel="stylesheet">
+        <link href="css/custom/website.css" rel="stylesheet">
+        <link href="css/thirdparty/fontawesome.all.min.css" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark text-white">
+                <div class="container">
+                    <a class="navbar-brand" href="index.html">PINs</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item"><a class="nav-link text-white" href="index.html#overview">Overview</a></li>
+                            <li class="nav-item"><a class="nav-link text-white" href="index.html#datasets">Datasets</a></li>
+                            <li class="nav-item"><a class="nav-link text-white" href="index.html#paper">Paper</a></li>
+                        </ul>
+                        <ul class="navbar-nav">
+                            <li class="nav-item active"><a class="nav-link text-white" href="contact.html" data-toggle="collapse" data-target=".navbar-collapse.show">Contact <span class="sr-only">(current)</span></a></li>
+                            <li class="nav-item"><a class="nav-link text-white" href="priv.html">Privacy</a></li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-sm-3">
-                <div class="card">
-                    <img class="card-img-top" src="images/1.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Philipp Markert</h5>
-                        <h6>Ruhr University Bochum &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</h6>
-                        <a href="https://www.mobsec.ruhr-uni-bochum.de/group/people/markert_philipp/" target="_blank" class="btn btn-primary btn-block"><i class="fas fa-external-link-alt"></i> Contact</a>
+            </nav>
+        </header>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-sm-3">
+                    <div class="card">
+                        <img class="card-img-top" src="images/1.jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Philipp Markert</h5>
+                            <h6>Ruhr University Bochum &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</h6>
+                            <a href="https://www.mobsec.ruhr-uni-bochum.de/group/people/markert_philipp/" target="_blank" class="btn btn-primary btn-block"><i class="fas fa-external-link-alt"></i> Contact</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="card">
+                        <img class="card-img-top" src="images/2.jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Daniel V. Bailey</h5>
+                            <h6>Ruhr University Bochum &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</h6>
+                            <a href="https://www.linkedin.com/in/danielvbailey" target="_blank" class="btn btn-primary btn-block"><i class="fas fa-external-link-alt"></i> Contact</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="card">
+                        <img class="card-img-top" src="images/3.jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Maximilian Golla</h5>
+                            <h6>Max Planck Institute for Security and Privacy</h6>
+                            <a href="https://www.mobsec.ruhr-uni-bochum.de/group/people/golla_maximilian/" target="_blank" class="btn btn-primary btn-block"><i class="fas fa-external-link-alt"></i> Contact</a>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-3">
-                <div class="card">
-                    <img class="card-img-top" src="images/2.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Daniel V. Bailey</h5>
-                        <h6>Ruhr University Bochum &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</h6>
-                        <a href="https://www.linkedin.com/in/danielvbailey" target="_blank" class="btn btn-primary btn-block"><i class="fas fa-external-link-alt"></i> Contact</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="card">
-                    <img class="card-img-top" src="images/3.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Maximilian Golla</h5>
-                        <h6>Max Planck Institute for Security and Privacy</h6>
-                        <a href="https://www.mobsec.ruhr-uni-bochum.de/group/people/golla_maximilian/" target="_blank" class="btn btn-primary btn-block"><i class="fas fa-external-link-alt"></i> Contact</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-sm-3"></div>
-            <div class="col-sm-3">
-                <div class="card">
-                    <img class="card-img-top" src="images/4.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Markus D&uuml;rmuth</h5>
-                        <h6>Ruhr University Bochum &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</h6>
-                        <a href="https://www.mobsec.ruhr-uni-bochum.de/group/people/duermuth_markus/" target="_blank" class="btn btn-primary btn-block"><i class="fas fa-external-link-alt"></i> Contact</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="card">
-                    <img class="card-img-top" src="images/5.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Adam J. Aviv</h5>
-                        <h6>The George Washington University</h6>
-                        <a href="https://adamaviv.com" target="_blank" class="btn btn-primary btn-block"><i class="fas fa-external-link-alt"></i> Contact</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3"></div>
-        </div>
-        <br>
-        <br>
-        <br>
-    </div>
-    <!-- end .container -->
-    <footer id="footer" class="footer bg-dark text-white">
-        <div class="container" style="padding-top: 15px;">
+            <br>
             <div class="row">
-                <div class="col-sm-10">
-                    <h5 class="text-uppercase">This PIN Can Be Easily Guessed</h5>
-                    <p>Philipp Markert, Daniel V. Bailey, Maximilian Golla, Markus D&uuml;rmuth, and Adam J. Aviv
-                        <br>
-                        <i>Ruhr University Bochum &amp; Max Planck Institute for Security and Privacy &amp; The George Washington University</i>
-                    </p>
+                <div class="col-sm-3"></div>
+                <div class="col-sm-3">
+                    <div class="card">
+                        <img class="card-img-top" src="images/4.jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Markus D&uuml;rmuth</h5>
+                            <h6>Ruhr University Bochum &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</h6>
+                            <a href="https://www.mobsec.ruhr-uni-bochum.de/group/people/duermuth_markus/" target="_blank" class="btn btn-primary btn-block"><i class="fas fa-external-link-alt"></i> Contact</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-sm-2">
-                    <h5 class="text-uppercase"><a href="contact.html">Contact</a></h5>
-                    <h5 class="text-uppercase"><a href="priv.html">Privacy</a></h5>
+                <div class="col-sm-3">
+                    <div class="card">
+                        <img class="card-img-top" src="images/5.jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Adam J. Aviv</h5>
+                            <h6>The George Washington University</h6>
+                            <a href="https://adamaviv.com" target="_blank" class="btn btn-primary btn-block"><i class="fas fa-external-link-alt"></i> Contact</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3"></div>
+            </div>
+            <br>
+            <br>
+            <br>
+        </div>
+        <!-- end .container -->
+        <footer id="footer" class="footer bg-dark text-white">
+            <div class="container" style="padding-top: 15px;">
+                <div class="row">
+                    <div class="col-sm-10">
+                        <h5 class="text-uppercase">This PIN Can Be Easily Guessed</h5>
+                        <p>Philipp Markert, Daniel V. Bailey, Maximilian Golla, Markus D&uuml;rmuth, and Adam J. Aviv
+                            <br>
+                            <i>Ruhr University Bochum &amp; Max Planck Institute for Security and Privacy &amp; The George Washington University</i>
+                        </p>
+                    </div>
+                    <div class="col-sm-2">
+                        <h5 class="text-uppercase"><a href="contact.html">Contact</a></h5>
+                        <h5 class="text-uppercase"><a href="priv.html">Privacy</a></h5>
+                    </div>
                 </div>
             </div>
-        </div>
-    </footer>
-    <script src="js/thirdparty/jquery-3.4.1.min.js"></script>
-    <script src="js/thirdparty/bootstrap.min.js"></script>
-    <script>
-        // Push the footer down
-        $(document).ready(function() {
-
-            var docHeight = $(window).height();
-            var footerHeight = $('#footer').height();
-            var footerTop = $('#footer').position().top + footerHeight;
-
-            if (footerTop < docHeight)
-                $('#footer').css('margin-top', 0 + (docHeight - footerTop) + 'px');
-        });
-    </script>
-</body>
-
+        </footer>
+        <script src="js/thirdparty/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/thirdparty/jquery.min.js"><\/script>')</script>
+        <script src="js/thirdparty/bootstrap.bundle.min.js"></script>
+        <script src="js/custom/website.js"></script>
+    </body>
 </html>
