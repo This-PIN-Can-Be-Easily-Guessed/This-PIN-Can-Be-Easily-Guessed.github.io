@@ -66,7 +66,7 @@
                             <p>Philipp Markert, Daniel V. Bailey, Maximilian Golla, Markus D&uuml;rmuth, and Adam J. Aviv
                                 <br>
                                 <i><a href="https://www.ruhr-uni-bochum.de/en" target="_blank">Ruhr University Bochum</a> &amp; <a href="https://www.mpi-sp.org" target="_blank">Max Planck Institute for Security and Privacy</a> &amp; <a href="https://www.gwu.edu" target="_blank">The George Washington University</a></i><br>
-                                <i>IEEE Symposium on Security and Privacy</i>, San Francisco, California, USA, May 2020
+                                ACM <i>Transactions on Privacy and Security</i> <b>and</b> IEEE <i>Symposium on Security and Privacy</i>
                             </p>
                             <p>
                                 <b>tl;dr:</b> Study of user-chosen 4- and 6-digit PINs collected on smartphones for device unlocking. Measuring the effects of blocklists, where a set of "<i>easy to guess</i>" PINs is disallowed during selection.
@@ -84,8 +84,14 @@
                 <div class="row">
                     <div class="col-sm-7">
                         <h2><i class="fas fa-mobile-alt"></i> PIN Selection on Smartphones</h2>
-                        <p>We conducted a user study focused on the selection of <a href="https://en.wikipedia.org/wiki/Personal_identification_number" target="_blank">Personal Identification Numbers (PINs)</a> based on data collected from users specifically primed for the smartphone unlock setting. Despite the rise of biometrics, such as fingerprint or facial recognition, devices still require PINs, e.g., after a restart or when the biometric fails.</p>
-                        <p>As a mechanism for improving PIN selection, we also studied how PINs are affected by blocklisting. A blocklist is a set of "<i>easy to guess</i>" PINs, which triggers a warning to the user. Apple iOS devices show the warning "<b>This PIN Can Be Easily Guessed</b>" with a choice to "<i>Use Anyway</i>" or "<i>Change PIN</i>."</p>
+                        <p>
+                            We conducted a user study focused on the selection of <a href="https://en.wikipedia.org/wiki/Personal_identification_number" target="_blank">Personal Identification Numbers (PINs)</a> based on data collected from users specifically primed for the smartphone unlock setting.
+                            Despite the rise of biometrics, such as fingerprint or facial recognition, devices still require PINs, e.g., after a restart or when the biometric fails.
+                        </p>
+                        <p>
+                            As a mechanism for improving PIN selection, we also studied how PINs are affected by blocklisting. A blocklist is a set of "<i>easy to guess</i>" PINs, which triggers a warning to the user.
+                            Apple iOS devices show the warning "<b>This PIN Can Be Easily Guessed</b>" with a choice to "<i>Use Anyway</i>" or "<i>Change PIN</i>."
+                        </p>
                     </div>
                     <div class="col-sm-5">
                         <img src="images/warning.jpg" class="img-fluid rounded" alt="Responsive image">
@@ -98,9 +104,12 @@
                     </div>
                     <div class="col-sm-7">
                         <h2 style="padding-top: 1rem;"><i class="fas fa-microscope"></i> Findings</h2>
-                        <p>Our study found there is
-                            <mark>little benefit to longer 6-digit PINs</mark> as compared to 4-digit PINs. Our participants tended to select more-easily guessed 6-digit PINs when considering the first 40 guesses of an attacker. Moreover, our results show that
-                            <mark>currently employed PIN blocklists are ineffective.</mark> Through quantitative and qualitative feedback, we found that participants perceive that blocklisting will improve their PINs without impacting usability.</p>
+                        <p>
+                            Our study found there is <mark>little benefit to longer 6-digit PINs</mark> as compared to 4-digit PINs.
+                            Our participants tended to select more-easily guessed 6-digit PINs when considering the first 40 guesses of an attacker.
+                            Moreover, our results show that <mark>currently employed PIN blocklists are ineffective.</mark>
+                            Through quantitative and qualitative feedback, we found that participants perceive that blocklisting will improve their PINs without impacting usability.
+                        </p>
                         <table class="table table-responsive table-hover">
                             <thead class="thead-dark">
                                 <tr>
@@ -136,9 +145,17 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <h2><i class="fab fa-apple"></i> Apple's iOS Passcode Blocklist</h2>
-                        <p>The iOS blocklist of passcodes was <mark>obtained via brute-force.</mark> To test if a PIN is blocklisted, one only needs to try it and see if a warning appears. During the initial iOS setup there is no rate-limiting in place, which enabled us to quickly test all possible PINs.
+                        <p>
+                            The iOS blocklist of passcodes was <mark>obtained via brute-force.</mark>
+                            To test if a PIN is blocklisted, one only needs to try it and see if a warning appears.
+                            During the initial iOS setup there is no rate-limiting in place, which enabled us to quickly test all possible PINs.
                         </p>
-                        <p>We constructed <mark>a device to automate this process using a Raspberry Pi equipped with a camera.</mark> The device emulates a USB keyboard, which is connected to the iPhone. After entering a PIN, the camera takes a photo of the iPhone screen. The photo is sent to a remote server, where the presence of the blocklist warning is detected by extracting the text in the photo.</p>
+                        <p>
+                            We constructed <mark>a device to automate this process using a Raspberry Pi equipped with a camera.</mark>
+                            The device emulates a USB keyboard, which is connected to the iPhone.
+                            After entering a PIN, the camera takes a photo of the iPhone screen.
+                            The photo is sent to a remote server, where the presence of the blocklist warning is detected by extracting the text in the photo.
+                        </p>
                         <p>More details and photos of the PIN extraction device can be found here: <a class="btn btn-success" href="media/Robot-2020-10-16.pdf" target="_blank" role="button"><i class="fas fa-file-powerpoint"></i> Extracting iOS' Passcode Blocklist</a></p>
                     </div>
                     <div class="col-sm-6">
@@ -156,7 +173,11 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <h2><i class="fas fa-clipboard-list"></i> Blocklists</h2>
-                        <p>In our study, we tested various blocklists in <i>enforcing</i> and <i>non-enforcing</i> settings. Besides Apple's 4-digit and 6-digit blocklists, we also created data-driven blocklists that are significantly (10x) smaller (27 PINs) and (10x) larger (2740 PINs) than the iOS 4-digit blocklist. To foster future research on this topic, we publish some of the studied blocklists here.</p>
+                        <p>
+                            In our study, we tested various blocklists in <i>enforcing</i> and <i>non-enforcing</i> settings.
+                            Besides Apple's 4-digit and 6-digit blocklists, we also created data-driven blocklists that are significantly (10x) smaller (27/29 PINs) and (10x) larger (2740/291000 PINs) than the iOS 4/6-digit blocklists.
+                            To foster future research on this topic, we publish some of the studied blocklists here.
+                        </p>
                         <table class="table table-responsive-md table-hover">
                             <caption>Apple's iOS Passcode blocklist was last updated with iOS 10.3 (14E277). Our data-driven blocklists, are based on PINs released by <a href="http://danielamitay.com/blog/2011/6/13/most-common-iphone-passcodes" target="_blank">Daniel Amitay</a> in 2011 and are partly reordered using a Markov model.</caption>
                             <thead class="thead-dark">
@@ -195,12 +216,28 @@
                                     <td class="text-center"><a href="media/DD-4-digit-27.zip" target="_blank" class="text-dark"><i class="fas fa-cloud-download-alt"></i></a></td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">5</th>
+                                    <th scope="row">4</th>
                                     <td>DD-4-digit-2740</td>
                                     <td class="text-center">Top Amitay</td>
                                     <td class="text-center">4-digit</td>
                                     <td class="text-right">2740</td>
                                     <td class="text-center"><a href="media/DD-4-digit-2740.zip" target="_blank" class="text-dark"><i class="fas fa-cloud-download-alt"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">5</th>
+                                    <td>DD-6-digit-29</td>
+                                    <td class="text-center">Top RockYou</td>
+                                    <td class="text-center">6-digit</td>
+                                    <td class="text-right">29</td>
+                                    <td class="text-center"><a href="media/DD-6-digit-29.zip" target="_blank" class="text-dark"><i class="fas fa-cloud-download-alt"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">6</th>
+                                    <td>DD-6-digit-291000</td>
+                                    <td class="text-center">Top RockYou</td>
+                                    <td class="text-center">6-digit</td>
+                                    <td class="text-right">291000</td>
+                                    <td class="text-center"><a href="media/DD-6-digit-291000.zip" target="_blank" class="text-dark"><i class="fas fa-cloud-download-alt"></i></a></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -256,8 +293,15 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <h2><i class="fas fa-search"></i> User-Chosen PINs</h2>
-                        <p>We conducted a user study of 4- and 6-digit PINs using Amazon Mechanical Turk (MTurk) with (n=1220) participants over a period of three weeks. To mimic the PIN creation process in our browser-based study, participants were restricted to mobile devices by checking the User-Agent string. We applied a 9-treatment, between-subjects study protocol for the PIN selection criteria, e.g., 4- vs. 6-digit with or without blocklisting. At the end of the study, we collected 851 and 369 PINs, 4- and 6-digits, respectively. These PINs were all selected, confirmed, and recalled. We additionally recorded all intermediate PIN selections, such as what would happen if a selected PIN was not blocklisted and the participant did not have to select a different PIN.</p>
-                        <p>We share this dataset of user-chosen PINs with other research institutions upon request. Contact details (<i class="fas fa-envelope-open-text"></i>) are published along with the paper.</p>
+                        <p>
+                            We conducted a user study of 4- and 6-digit PINs using Amazon Mechanical Turk (MTurk) with (n=1705) participants over a period of three weeks.
+                            To mimic the PIN creation process in our browser-based study, participants were restricted to mobile devices by checking the User-Agent string.
+                            We applied a 9-treatment, between-subjects study protocol for the PIN selection criteria, e.g., 4- vs. 6-digit with or without blocklisting.
+                            At the end of the study, we collected 851 and 854 PINs, 4- and 6-digits, respectively.
+                            These PINs were all selected, confirmed, and recalled.
+                            We additionally recorded all intermediate PIN selections, such as what would happen if a selected PIN was not blocklisted and the participant did not have to select a different PIN.
+                        </p>
+                        <p>We share this dataset of user-chosen PINs with other research institutions upon request. Contact details (<i class="fas fa-envelope-open-text"></i>) are published along with the papers.</p>
                     </div>
                 </div>
             </div>
@@ -265,12 +309,21 @@
             <br>
             <!-- paper -->
             <div id="paper">
-                <h1 class="display-4"><i class="fas fa-file-pdf"></i> Technical Paper</h1>
+                <h1 class="display-4"><i class="fas fa-file-pdf"></i> Technical Papers</h1>
                 <hr>
-                <p>Our work appeared at the <a href="https://www.ieee-security.org/TC/SP2020/">41st IEEE Symposium on Security and Privacy</a>.</p>
+                <p>An extended version of our work appeared in the <a href="https://dl.acm.org/doi/10.1145/3473040">ACM Transactions on Privacy and Security (ACM TOPS '21, Vol. 24, No. 4)</a>.</p>
                 <ul class="list-group list-group-horizontal">
                     <li class="list-group-item" style="border: 0px;">
-                        <a class="btn btn-primary" href="https://arxiv.org/pdf/2003.04868.pdf" target="_blank"><i class="far fa-file-pdf"></i> <span class="network-name">Paper</span></a>
+                        <a class="btn btn-secondary" href="https://dl.acm.org/doi/pdf/10.1145/3473040" target="_blank" style="background-color:#6f42c1"><i class="far fa-file-pdf"></i> <span class="network-name">Extended Paper</span></a>
+                        <span class="text-muted" style="font-size: 0.9rem;"><i class="fas fa-info-circle"></i> Includes new data about 6-digit PINs and an extended analysis.</span>
+                    </li>
+                </ul>
+
+                <hr>
+                <p>Our work appeared at the <a href="https://www.ieee-security.org/TC/SP2020/">41st IEEE Symposium on Security and Privacy (IEEE SP '20)</a>.</p>
+                <ul class="list-group list-group-horizontal">
+                    <li class="list-group-item" style="border: 0px;">
+                        <a class="btn btn-primary" href="https://arxiv.org/pdf/2003.04868.pdf" target="_blank"><i class="far fa-file-pdf"></i> <span class="network-name">Original Paper</span></a>
                     </li>
                     <li  class="list-group-item" style="border: 0px;">
                         <a class="btn btn-success" href="media/Slides-2020-05-18.pdf" target="_blank"><i class="fas fa-chalkboard-teacher"></i> <span class="network-name">Slides</span></a>
@@ -281,24 +334,37 @@
                 </ul>
                 <br>
                 <h2><i class="fas fa-align-left"></i> Abstract</h2>
-                <p>In this paper, we provide the first comprehensive study of user-chosen 4- and 6-digit PINs (n=1220) collected on smartphones with participants being explicitly primed for the situation of device unlocking. We find that against a throttled attacker (with 10, 30, or 100 guesses, matching the smartphone unlock setting), using 6-digit PINs instead of 4-digit PINs provides little to no increase in security, and surprisingly may even decrease security.</p>
-                <p>We also study the effects of blocklists, where a set of "easy to guess" PINs is disallowed during selection. Two such blocklists are in use today by iOS, for 4-digits (274 PINs) as well as 6-digits (2910 PINs). We extracted both blocklists compared them with four other blocklists, including a small 4-digit (27 PINs), a large 4-digit (2740 PINs), and two placebo blocklists for 4- and 6-digit PINs that always excluded the first-choice PIN. We find that relatively small blocklists in use today by iOS offer little or no benefit against a throttled guessing attack. Security gains are only observed when the blocklists are much larger, which in turn comes at the cost of increased user frustration. Our analysis suggests that a blocklist at about 10% of the PIN space may provide the best balance between usability and security.</p>
+                <p>
+                    In this article, we provide the first comprehensive study of user-chosen four- and six-digit PINs (n=1705) collected on smartphones with participants being explicitly primed for device unlocking.
+                    We find that against a throttled attacker (with 10, 30, or 100 guesses, matching the smartphone unlock setting), using six-digit PINs instead of four-digit PINs provides little to no increase in security and surprisingly may even decrease security.
+                    We also study the effects of blocklists, where a set of "easy to guess" PINs is disallowed during selection.
+                    Two such blocklists are in use today by iOS, for four digits (274 PINs) as well as six digits (2,910 PINs).
+                    We extracted both blocklists and compared them with six other blocklists, three for each PIN length.
+                    In each case, we had a small (four-digit: 27 PINs; six-digit: 29 PINs), a large (four-digit: 2,740 PINs; six-digit: 291,000 PINs), and a placebo blocklist that always excluded the first-choice PIN.
+                </p>
+                <p>
+                    For four-digit PINs, we find that the relatively small blocklist in use today by iOS offers little to no benefit against a throttled guessing attack.
+                    Security gains are only observed when the blocklist is much larger.
+                    In the six-digit case, we were able to reach a similar security level with a smaller blocklist.
+                    As the user frustration increases with the blocklists size, developers should employ a blocklist that is as small as possible while ensuring the desired security.
+                    Based on our analysis, we recommend that for four-digit PINs a blocklist should contain the 1,000 most popular PINs to provide the best balance between usability and security and for six-digit PINs the 2,000 most popular PINs should be blocked.
+                </p>
                 <br>
                 <h2><i class="fas fa-book"></i> BibTeX</h2>
                 <div>
-                    If you want to cite the dataset or the paper, please use the following BibTeX entry:
+                    If you want to cite the dataset or the extended paper, please use the following BibTeX entry:
                 </div>
                 <br>
-                <pre class="code bg-light">@inproceedings{markert-20-pin-blocklist,
-        author = {Markert, Philipp and Bailey, Daniel V. and Golla, Maximilian and D\"{u}rmuth, Markus and Aviv, Adam J.},
-        title = {{This PIN Can Be Easily Guessed: Analyzing the Security of Smartphone Unlock PINs}},
-        booktitle = {IEEE Symposium on Security and Privacy},
-        year = {2020},
-        series = {SP~'20},
-        pages = {286--303},
-        address = {San Francisco, California, USA},
-        month = may,
-        publisher = {IEEE}
+                <pre class="code bg-light">@article{markert-21-unlock-pins,
+    author = {Markert, Philipp and Bailey, Daniel V. and Golla, Maximilian and D\"{u}rmuth, Markus and Aviv, Adam J.},
+    title = {{On the Security of Smartphone Unlock PINs}},
+    journal = {ACM Transactions on Privacy and Security},
+    year = {2021},
+    volume = {24},
+    number = {4},
+    pages = {30:1--30:36},
+    month = nov,
+    publisher = {ACM}
 }</pre>
             </div>
             <!-- end paper -->
